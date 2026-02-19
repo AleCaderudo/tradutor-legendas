@@ -55,7 +55,7 @@ Os arquivos originais NÃO são modificados.
 Clone o repositório:
 
 ``` bash
-git clone https://github.com/seu-usuario/tradutor-legendas.git
+git clone https://github.com/AleCaderudo/tradutor-legendas.git
 cd tradutor-legendas
 ```
 
