@@ -6,6 +6,20 @@ progresso e limpeza automática de descrições sonoras.
 
 ------------------------------------------------------------------------
 
+## 🖥️ Interface
+
+![Interface do Programa](print_tela.jpg)
+
+A aplicação possui interface gráfica simples com:
+
+-   Botão para selecionar múltiplas legendas
+-   Barra de progresso
+-   Status de execução
+-   Botão fechar
+-   Link para o desenvolvedor
+
+------------------------------------------------------------------------
+
 ## 🚀 Funcionalidades
 
 ✔ Tradução automática utilizando Google Translate (via deep-translator)\
@@ -17,18 +31,6 @@ como `Oh, Deus, isso [bip] dói.`\
 ✔ Mantém o mesmo nome dos arquivos originais\
 ✔ Interface simples e intuitiva\
 ✔ Versão executável (.exe)
-
-------------------------------------------------------------------------
-
-## 🖥️ Interface
-
-A aplicação possui interface gráfica simples com:
-
--   Botão para selecionar múltiplas legendas
--   Barra de progresso
--   Status de execução
--   Botão fechar
--   Link para o desenvolvedor
 
 ------------------------------------------------------------------------
 
@@ -116,6 +118,7 @@ O executável será criado na pasta:
     ├── Tr.py
     ├── tradutor.py
     ├── requirements.txt
+    ├── print_tela.jpg
     └── README.md
 
 ------------------------------------------------------------------------
