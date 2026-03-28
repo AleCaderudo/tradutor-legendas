@@ -1,154 +1,189 @@
-# 🎬 Tradutor de Legendas (.srt)
+# 🎬 Tradutor de Legendas
 
-Aplicação desktop em Python com interface gráfica para tradução
-automática de legendas `.srt`, com suporte a tradução em lote, barra de
-progresso e limpeza automática de descrições sonoras.
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Windows](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![Formats](https://img.shields.io/badge/Formats-SRT%20%7C%20ASS%20%7C%20VTT-success)
+![Interface](https://img.shields.io/badge/GUI-Tkinter-informational)
+![License](https://img.shields.io/badge/License-Uso%20pessoal%20e%20educacional-orange)
 
-------------------------------------------------------------------------
+Aplicação desktop em Python para tradução automática de legendas com interface gráfica, suporte a **`.srt`**, **`.ass`** e **`.vtt`**, tradução em lote, arrastar e soltar arquivos ou pastas, barra de progresso e limpeza automática de elementos indesejados da legenda.
+
+---
 
 ## 🖥️ Interface
 
 ![Interface do Programa](print_tela.jpg)
 
-A aplicação possui interface gráfica simples com:
+---
 
--   Botão para selecionar múltiplas legendas
--   Barra de progresso
--   Status de execução
--   Botão fechar
--   Link para o desenvolvedor
+## ✨ Recursos
 
-------------------------------------------------------------------------
+- Tradução automática via **Google Translate** usando `deep-translator`
+- Suporte a **`.srt`**, **`.ass`** e **`.vtt`**
+- Tradução em lote de **múltiplos arquivos**
+- Tradução de **pastas inteiras**
+- Suporte a **drag and drop** de arquivos e pastas
+- Barra de progresso durante o processamento
+- Geração automática da pasta **`traduzido`**
+- Mantém o **mesmo nome do arquivo original**
+- Interface simples e direta
+- Compatível com geração de executável `.exe`
 
-## 🚀 Funcionalidades
+---
 
-✔ Tradução automática utilizando Google Translate (via deep-translator)\
-✔ Tradução em lote (vários arquivos `.srt`)\
-✔ Barra de progresso (arquivo atual / total)\
-✔ Remove descrições sonoras: - Linhas como `[birds chirping]` - Trechos
-como `Oh, Deus, isso [bip] dói.`\
-✔ Cria automaticamente pasta `traduzido`\
-✔ Mantém o mesmo nome dos arquivos originais\
-✔ Interface simples e intuitiva\
-✔ Versão executável (.exe)
+## 🧹 Limpeza automática antes da tradução
 
-------------------------------------------------------------------------
+O programa remove automaticamente elementos comuns que atrapalham a tradução ou deixam a legenda poluída, como:
+
+- textos entre colchetes: `[birds chirping]`
+- textos entre parênteses: `(laughing)`
+- textos entre chaves: `{comment}`
+- tags HTML: `<i>texto</i>`, `<font color="red">`
+- símbolos musicais: `♪`, `♫`, `♬`
+
+Exemplo:
+
+```text
+♪ Music playing ♪
+<i>Hello</i>
+Oh God, this [beep] hurts (laughing)
+```
+
+Resultado processado:
+
+```text
+Hello
+Oh God, this hurts
+```
+
+---
 
 ## 📂 Como funciona
 
-Ao selecionar os arquivos `.srt`, o programa:
+Ao selecionar arquivos ou arrastar uma pasta para a interface, o programa:
 
-1.  Remove textos entre colchetes `[ ... ]`
-2.  Divide o conteúdo em blocos seguros (≤ 5000 caracteres)
-3.  Traduz automaticamente
-4.  Salva o resultado em:
+1. identifica os arquivos de legenda compatíveis
+2. limpa trechos indesejados
+3. divide o conteúdo em blocos seguros para tradução
+4. traduz automaticamente
+5. salva o resultado em uma subpasta chamada **`traduzido`**
 
-```{=html}
-<!-- -->
+Exemplo de saída:
+
+```text
+pasta_original/
+├── episodio01.srt
+├── episodio02.ass
+├── episodio03.vtt
+└── traduzido/
+    ├── episodio01.srt
+    ├── episodio02.ass
+    └── episodio03.vtt
 ```
-    pasta_original/traduzido/nome_original.srt
 
-Os arquivos originais NÃO são modificados.
+Os arquivos originais **não são modificados**.
 
-------------------------------------------------------------------------
+---
 
 ## 📦 Instalação
 
 Clone o repositório:
 
-``` bash
+```bash
 git clone https://github.com/AleCaderudo/tradutor-legendas.git
 cd tradutor-legendas
 ```
 
-Crie um ambiente virtual:
+Crie o ambiente virtual:
 
-``` bash
+```bash
 python -m venv .venv
 ```
 
-Ative o ambiente:
+Ative o ambiente virtual no Windows:
 
-Windows:
-
-``` bash
+```bash
 .venv\Scripts\activate
 ```
 
 Instale as dependências:
 
-``` bash
+```bash
 pip install -r requirements.txt
 ```
 
-------------------------------------------------------------------------
+---
 
-## ▶️ Executar o programa
+## ▶️ Como executar
 
-``` bash
+```bash
 python Tr.py
 ```
 
-------------------------------------------------------------------------
+---
 
-## 🏗️ Gerar Executável (.exe)
+## 🏗️ Gerar executável (.exe)
 
 Instale o PyInstaller:
 
-``` bash
+```bash
 pip install pyinstaller
 ```
 
 Gere o executável:
 
-``` bash
+```bash
 pyinstaller --onefile --windowed --name TradutorLegendas Tr.py
 ```
 
-O executável será criado na pasta:
+O arquivo final será criado em:
 
-    dist/TradutorLegendas.exe
+```text
+dist/TradutorLegendas.exe
+```
 
-------------------------------------------------------------------------
+---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do projeto
 
-    tradutor-legendas/
-    │
-    ├── Tr.py
-    ├── tradutor.py
-    ├── requirements.txt
-    ├── print_tela.jpg
-    └── README.md
+```text
+tradutor-legendas/
+├── Tr.py
+├── tradutor.py
+├── requirements.txt
+├── print_tela.jpg
+└── README.md
+```
 
-------------------------------------------------------------------------
+---
 
 ## 📚 Dependências
 
--   deep-translator==1.11.4
--   pysrt==1.1.2
--   tkinter (já incluso no Python)
+- `deep-translator==1.11.4`
+- `pysrt==1.1.2`
+- `tkinterdnd2`
+- `tkinter` (já incluso no Python)
 
-------------------------------------------------------------------------
+---
 
-## ⚠️ Limitações
+## ⚠️ Observações
 
--   Requer conexão com internet.
--   O Google Translate possui limite de \~5000 caracteres por requisição
-    (tratado internamente).
--   A qualidade da tradução depende do serviço externo.
+- Requer conexão com a internet
+- A tradução depende da disponibilidade do Google Translate
+- O limite por requisição é tratado internamente pelo programa
+- O projeto foi pensado para uso pessoal e educacional
 
-------------------------------------------------------------------------
+---
 
 ## 👨‍💻 Desenvolvido por
 
-MHPS\
-https://www.mhps.com.br
+**MHPS**  
+Site: https://www.mhps.com.br
 
-------------------------------------------------------------------------
+---
 
 ## 📜 Licença
 
-Este projeto é disponibilizado para uso pessoal e educacional.
+Este projeto é disponibilizado para **uso pessoal e educacional**.
 
-Para uso comercial, verifique os termos de uso do Google Translate.
+Para uso comercial, verifique os termos de uso dos serviços de tradução utilizados.
